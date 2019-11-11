@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
+	"github.com/k0kubun/pp"
 	"golang.org/x/xerrors"
 )
 
@@ -14,7 +15,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	publc, err := ioutil.ReadFile("example_rsa.pub.pkcs8")
+	publc, err := ioutil.ReadFile("example_rsa.pub")
 	if err != nil {
 		panic(err)
 	}
@@ -29,7 +30,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("Claims: %+v\n", claims)
+	pp.Printf("Claims: %+v\n", claims)
 }
 
 func newJWT(privt []byte) (string, error) {
